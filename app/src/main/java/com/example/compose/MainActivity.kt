@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -11,17 +12,26 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.CutCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -49,12 +59,15 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun ButtonDemo(){
     val context = LocalContext.current
-    Button(onClick = {
-        Toast.makeText(
-            context,
-            "Clicked",
-            Toast.LENGTH_SHORT)
-            .show()}) {
+    Button(onClick = { Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show()},
+        shape = CircleShape,
+        contentPadding = PaddingValues(16.dp),
+        border = BorderStroke(10.dp, Color.Black),
+        colors = ButtonDefaults.textButtonColors(
+            containerColor = Color.DarkGray,
+            contentColor = Color.White
+        )
+    ) {
         Text(text = "Add To Cart")
     }
 
@@ -68,6 +81,51 @@ fun ButtonDemo(){
         Text(text = "Add To Cart")
     }
 
+    TextButton(onClick = {
+        Toast.makeText(
+            context,
+            "Clicked",
+            Toast.LENGTH_SHORT)
+            .show()}) {
+        Text(text = "Add To Cart")
+    }
+
+    OutlinedButton(onClick = {
+        Toast.makeText(
+            context,
+            "Clicked",
+            Toast.LENGTH_SHORT)
+            .show()}) {
+        Text(text = "Add To Cart")
+    }
+
+    IconButton(onClick = {
+        Toast.makeText(
+            context,
+            "Clicked",
+            Toast.LENGTH_SHORT)
+            .show()}) {
+
+        Icon(
+            Icons.Filled.Refresh,
+            contentDescription = "Refresh Button",
+            tint = Color.DarkGray,
+            modifier = Modifier.size(80.dp)
+        )
+    }
+
+    Button(onClick = { Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show()},
+        shape = CutCornerShape(10.dp),
+        contentPadding = PaddingValues(16.dp),
+        border = BorderStroke(10.dp, Color.Black),
+        colors = ButtonDefaults.textButtonColors(containerColor = Color.DarkGray,contentColor = Color.White)
+    ) {
+        Text(
+            text = "Add To Cart",
+            style = MaterialTheme.typography.bodySmall,
+            modifier = Modifier.padding(5.dp)
+            )
+    }
 }
 
 
