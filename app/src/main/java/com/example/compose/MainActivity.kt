@@ -6,12 +6,14 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -37,6 +39,94 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
+fun BoxExample(){
+    Box(modifier = Modifier
+        .background(color = Color.Green)
+        .size(100.dp, 300.dp)
+    ){
+        Box (modifier = Modifier
+            .background(color = Color.Yellow)
+            .size(125.dp, 100.dp)
+            .align(Alignment.TopEnd)
+        ){
+
+        }
+
+        Text(text = "hello", style = MaterialTheme.typography.bodyMedium,
+            modifier = Modifier
+                .background(color = Color.White)
+                .size(90.dp, 50.dp)
+                .align(Alignment.BottomCenter)
+                )
+    }
+}
+
+@Composable
+fun BoxExample2(){
+    Box (
+        modifier = Modifier
+            .background(color = Color.LightGray)
+            .fillMaxSize()
+    ){
+        Text(text = "TopStart", style = MaterialTheme.typography.bodySmall,
+            modifier = Modifier
+                .background(Color.Yellow)
+                .padding(10.dp)
+                .align(Alignment.TopStart)
+        )
+        Text(text = "TopCenter", style = MaterialTheme.typography.bodySmall,
+            modifier = Modifier
+                .background(Color.Yellow)
+                .padding(10.dp)
+                .align(Alignment.TopCenter)
+        )
+        Text(text = "TopEnd", style = MaterialTheme.typography.bodySmall,
+            modifier = Modifier
+                .background(Color.Yellow)
+                .padding(10.dp)
+                .align(Alignment.TopEnd)
+        )
+        Text(text = "CenterStart", style = MaterialTheme.typography.bodySmall,
+            modifier = Modifier
+                .background(Color.Yellow)
+                .padding(10.dp)
+                .align(Alignment.CenterStart)
+        )
+        Text(text = "Center", style = MaterialTheme.typography.bodySmall,
+            modifier = Modifier
+                .background(Color.Yellow)
+                .padding(10.dp)
+                .align(Alignment.Center)
+        )
+        Text(text = "CenterEnd", style = MaterialTheme.typography.bodySmall,
+            modifier = Modifier
+                .background(Color.Yellow)
+                .padding(10.dp)
+                .align(Alignment.CenterEnd)
+        )
+        Text(text = "BottomStart", style = MaterialTheme.typography.bodySmall,
+            modifier = Modifier
+                .background(Color.Yellow)
+                .padding(10.dp)
+                .align(Alignment.BottomStart)
+        )
+        Text(text = "BottomCenter", style = MaterialTheme.typography.bodySmall,
+            modifier = Modifier
+                .background(Color.Yellow)
+                .padding(10.dp)
+                .align(Alignment.BottomCenter)
+        )
+        Text(text = "BottomEnd", style = MaterialTheme.typography.bodySmall,
+            modifier = Modifier
+                .background(Color.Yellow)
+                .padding(10.dp)
+                .align(Alignment.BottomEnd)
+        )
+
+    }
+}
+
+@Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
     Text(
         text = name,
@@ -55,6 +145,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 
 @Composable
 fun AppUI() {
+
     Row(
         modifier = Modifier
             .background(color = Color.LightGray)
@@ -67,6 +158,8 @@ fun AppUI() {
         Greeting("John")
         Greeting("James")
     }
+
+    BoxExample2()
 }
 
 
