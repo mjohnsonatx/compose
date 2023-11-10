@@ -1,6 +1,7 @@
 package com.example.compose
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
@@ -26,6 +27,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -43,6 +45,31 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+
+@Composable
+fun ButtonDemo(){
+    val context = LocalContext.current
+    Button(onClick = {
+        Toast.makeText(
+            context,
+            "Clicked",
+            Toast.LENGTH_SHORT)
+            .show()}) {
+        Text(text = "Add To Cart")
+    }
+
+    Button(onClick = {
+        Toast.makeText(
+            context,
+            "Clicked",
+            Toast.LENGTH_SHORT)
+            .show()},
+        enabled = false) {
+        Text(text = "Add To Cart")
+    }
+
+}
+
 
 @Composable
 fun BoxExample(){
@@ -132,36 +159,36 @@ fun BoxExample2(){
     }
 }
 
-@Composable
-fun BoxExample3(){
-    Box {
-        Image(
-            painter = painterResource(id = R.drawable.climbing_pose),
-            contentDescription = "sample pic")
-        Text(
-            text = "sample pic in box",
-            style = MaterialTheme.typography.headlineSmall,
-            color = Color.Black,
-            modifier = Modifier
-                .align(Alignment.BottomStart)
-        )
-
-        Button(
-            onClick = {},
-            colors = ButtonDefaults.textButtonColors(
-                contentColor = Color.DarkGray,
-                containerColor = Color.White
-            ),
-            modifier = Modifier
-                .align(Alignment.TopEnd)
-                .padding(10.dp)
-                .border(5.dp, Color.DarkGray, RectangleShape)
-            ) {
-            Text("Add to cart?")
-        }
-
-    }
-}
+//@Composable
+//fun BoxExample3(){
+//    Box {
+//        Image(
+//            painter = painterResource(id = R.drawable.climbing_pose),
+//            contentDescription = "sample pic")
+//        Text(
+//            text = "sample pic in box",
+//            style = MaterialTheme.typography.headlineSmall,
+//            color = Color.Black,
+//            modifier = Modifier
+//                .align(Alignment.BottomStart)
+//        )
+//
+//        Button(
+//            onClick = {},
+//            colors = ButtonDefaults.textButtonColors(
+//                contentColor = Color.DarkGray,
+//                containerColor = Color.White
+//            ),
+//            modifier = Modifier
+//                .align(Alignment.TopEnd)
+//                .padding(10.dp)
+//                .border(5.dp, Color.DarkGray, RectangleShape)
+//            ) {
+//            Text("Add to cart?")
+//        }
+//
+//    }
+//}
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
@@ -183,20 +210,28 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Composable
 fun AppUI() {
 
-    Row(
-        modifier = Modifier
-            .background(color = Color.LightGray)
-            .fillMaxSize(),
-        verticalAlignment = Alignment.Bottom,
-        horizontalArrangement = Arrangement.SpaceEvenly,
-
+    Column(
+        verticalArrangement = Arrangement.SpaceEvenly,
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier.fillMaxSize()
     ) {
-        Greeting("Michael")
-        Greeting("John")
-        Greeting("James")
+        ButtonDemo()
     }
 
-    BoxExample3()
+//    Row(
+//        modifier = Modifier
+//            .background(color = Color.LightGray)
+//            .fillMaxSize(),
+//        verticalAlignment = Alignment.Bottom,
+//        horizontalArrangement = Arrangement.SpaceEvenly,
+//
+//    ) {
+//        Greeting("Michael")
+//        Greeting("John")
+//        Greeting("James")
+//    }
+
+//    BoxExample3()
 
     //BoxExample2()
 }
