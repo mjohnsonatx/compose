@@ -3,10 +3,12 @@ package com.example.compose
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -14,6 +16,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -21,6 +25,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -127,6 +133,37 @@ fun BoxExample2(){
 }
 
 @Composable
+fun BoxExample3(){
+    Box {
+        Image(
+            painter = painterResource(id = R.drawable.climbing_pose),
+            contentDescription = "sample pic")
+        Text(
+            text = "sample pic in box",
+            style = MaterialTheme.typography.headlineSmall,
+            color = Color.Black,
+            modifier = Modifier
+                .align(Alignment.BottomStart)
+        )
+
+        Button(
+            onClick = {},
+            colors = ButtonDefaults.textButtonColors(
+                contentColor = Color.DarkGray,
+                containerColor = Color.White
+            ),
+            modifier = Modifier
+                .align(Alignment.TopEnd)
+                .padding(10.dp)
+                .border(5.dp, Color.DarkGray, RectangleShape)
+            ) {
+            Text("Add to cart?")
+        }
+
+    }
+}
+
+@Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
     Text(
         text = name,
@@ -159,7 +196,9 @@ fun AppUI() {
         Greeting("James")
     }
 
-    BoxExample2()
+    BoxExample3()
+
+    //BoxExample2()
 }
 
 
