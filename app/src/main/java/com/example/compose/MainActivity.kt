@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -26,7 +27,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            Greeting("Michael")
+            AppUI()
         }
     }
 }
@@ -48,12 +49,20 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
     )
 }
 
+@Composable
+fun AppUI() {
+    Column {
+        Greeting("Michael")
+        Greeting("John")
+        Greeting("James")
+    }
+}
 
 
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     ComposeTheme {
-        Greeting("Michael")
+        AppUI()
     }
 }
